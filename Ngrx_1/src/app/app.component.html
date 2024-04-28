@@ -304,6 +304,11 @@
 
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
+  <div *ngFor="let post = Post$ | async">
+<span>
+  {{post.name}}
+</span>
+  </div>
   <img
     width="40"
     alt="Angular Logo"
