@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import * as postActions from './Store/post.action'
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { postState } from './Store/post.reducer';
 import { selectProdcutSelector } from './Store/post.selector';
+import { Post } from './Store/modle';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,9 +10,11 @@ import { selectProdcutSelector } from './Store/post.selector';
 })
 export class AppComponent {
   title = 'Ngrx_1';
-  Post$:Observable<any>
+  Posts:Post[] = [];
   constructor(private store:Store){
     this.store.dispatch(postActions.loadPost());
-    this.Post$ = this.store.select(selectProdcutSelector)
+   this.store.select(selectProdcutSelector).subscribe((res)=>{
+    this.Posts = res.slice(0,10);
+   })
   }
 }

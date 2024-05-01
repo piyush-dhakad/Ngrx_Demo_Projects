@@ -1,13 +1,15 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { postState } from "./post.reducer";
-import { state } from "@angular/animations";
+import { postsState } from "./modle";
 
-export const selectorpostFeature = createFeatureSelector<postState>('post')
+export const selectorpostFeature = createFeatureSelector<postsState>('postsState')
+
+
+
 export const selectProdcutSelector = createSelector(
     selectorpostFeature,
-    (state:postState) => state.posts
+    (state:postsState) => state.posts
 )
 export const selectErrorSelector = createSelector(
     selectorpostFeature,
-    (state:postState) => state.error
+    (state:postsState) => state.error
 )

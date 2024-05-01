@@ -6,16 +6,18 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import {HttpClientModule} from '@angular/common/http'
-import { postReducer } from './Store/post.reducer';
+import { addPostReducer, postReducer } from './Store/post.reducer';
 import { PostEffect } from './Store/post.effect';
+import { AddPostComponent } from './add-post/add-post.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({postsState:postReducer}, {}),
+    StoreModule.forRoot({postsState:postReducer}),
     EffectsModule.forRoot([PostEffect]),
     HttpClientModule
   ],
